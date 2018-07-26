@@ -1,0 +1,63 @@
+---
+# Local 'administrators' group
+admins:
+  group: administrators
+  members:
+    - member: 'cm-dp\Administrator'
+    - member: 'DOMAIN\CmInfraAdmins'
+    - member: 'DOMAIN\ServerOperators'
+    - member: 'DOMAIN\cm-ss$'
+
+nosms:
+  drives:
+    - drive: 'c:\'
+
+features:
+  feature:
+    - name: FileAndStorage-Services
+    - name: File-Services
+    - name: FS-FileServer
+    - name: Storage-Services
+    ##
+    - name: Web-Server
+    - name: Web-WebServer
+    - name: Web-Common-Http
+    - name: Web-Default-Doc
+    - name: Web-Dir-Browsing
+    - name: Web-Http-Errors
+    - name: Web-Static-Content
+    - name: Web-Http-Redirect
+    - name: Web-Health
+    - name: Web-Http-Logging
+    - name: Web-Performance
+    - name: Web-Stat-Compression
+    - name: Web-security
+    - name: Web-Filtering
+    - name: Web-Windows-Auth
+    - name: Web-App-Dev
+    - name: Web-ISAPI-Ext
+    - name: Web-Mgmt-tools
+    - name: Web-Mgmt-Console
+    - name: Web-Mgmt-Compat
+    - name: Web-Metabase
+    - name: Web-WMI
+    - name: Web-Scripting-Tools
+    ##
+    - name: NET-Framework-45-features
+    - name: NET-Framework-45-Core
+    - name: NET-WCF-Services45
+    - name: NET-WCF-TCP-PortSharing45
+    ##
+    - name: RDC
+    ##
+    - name: FS-SMB1
+    ##
+    - name: Windows-Defender-Features
+    - name: Windows-Defender
+    - name: Windows-Defender-GUI
+    ##
+    - name: PowerShellRoot
+    - name: PowerShell
+    - name: PowerShell-ISE
+    ##
+    - name: WoW64-Support

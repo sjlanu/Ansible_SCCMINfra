@@ -1,0 +1,16 @@
+---
+- name: install WSUS
+  win_feature:
+    name: UpdateServices
+    state: Present
+    # Content_Dir: 'D:\wsuscontent'
+
+- name: install WSUS services
+  win_feature:
+    name: UpdateServices-services
+    state: present
+
+- name: install WSUS services DB
+  win_feature:
+    name: UpdateServices-DB
+    state: present

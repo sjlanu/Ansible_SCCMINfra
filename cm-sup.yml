@@ -1,0 +1,12 @@
+---
+  - hosts: cm-sup
+    gather_facts: yes
+    tasks:
+    - name: Test system connection
+      wait_for_connection:
+        timeout: 20
+      tags: test_connection
+
+    roles:
+      - cm-sup
+      - winupdate

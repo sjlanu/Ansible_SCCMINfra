@@ -1,0 +1,35 @@
+---
+# Check for Window Updates and install. Write results to EventLog "AnsibleLog" with EventID 44444
+- name: Test system connection
+  wait_for_connection:
+    timeout: 20
+  tags: test_connection
+
+- name: Include create_ansible_eventlog
+  include_tasks: roles/common/tasks/create_ansible_eventlog.yml
+
+- name: Install windows updates
+  win_updates:
+    category_names:
+      - SecurityUpdates
+      - CriticalUpdates
+      - Updates
+    state: installed
+  register: updates
+  tags: install_windows_updates
+
+- name: set Ansible fact for Windows Updates
+  set_fact:
+    result: "{{ updates }}"
+
+- name: Write updates to eventlog
+  win_eventlog_entry:
+    log: AnsibleLog
+    source: Ansible
+    event_id: 44444
+    message: "{{ result | string | regex_replace(',',';\n') }}"
+
+- name: Reboot if required
+  win_reboot:
+  when: updates.reboot_required
+  tags: reboot_if_required

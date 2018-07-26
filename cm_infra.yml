@@ -1,0 +1,39 @@
+---
+  - hosts: cm_infra
+    gather_facts: yes
+    tasks:
+    - name: Test system connection
+      wait_for_connection:
+        timeout: 20
+      tags: test_connection
+
+    - name: cminfra DSC Firewall rules
+      include_tasks: roles/common/tasks/firewall_cm_infra.yml
+      tags: cminfra_dsc_firewall_rules
+
+    # Add local 'administrators' group members
+    - name: Local admin group members
+      win_dsc:
+        resource_name: group
+        groupname: "{{ admins.group }}"
+        ensure: present
+        memberstoinclude: "{{ item.member }}"
+      with_items:
+        - "{{ admins.members }}"
+      tags: cminfra_dsc_local_admin_group
+
+    - name: copy no_sms_on_drive.sms
+      win_copy:
+        src: "{{localhome}}/src/WIN_ansible/ansible-playbooks/roles/common/files/no_sms_on_drive.sms"
+        dest: "{{ item.drive }}"
+      with_items:
+        - "{{ nosms.drives }}"
+      tags: copy_no_sms
+
+    - name: Set timezone to 'FLE Standard Time' (UTC+02:00)
+      win_timezone:
+        timezone: FLE Standard Time
+      tags: set_timezone
+
+     roles:
+       - winupdate

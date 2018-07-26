@@ -1,0 +1,115 @@
+---
+- name: Install xNetworking module
+  win_psmodule:
+    name: xNetworking
+    state: present
+  tags: install_xNetworking_module
+
+- name: Ensure firewall service is running
+  win_dsc:
+    resource_name: service
+    name: MpsSvc
+    startuptype: Automatic
+    State: running
+
+- name: Ensure firewall profiles are enabled
+  win_dsc:
+    resource_name: xfirewallprofile
+    name: "{{ item.name }}"
+    enabled: True
+  with_items:
+    - "{{ cminfra_dsc_fwprofiles }}"
+
+- name: cminfra_allowICMPv4_Ansiblemanaged
+  win_dsc:
+    resource_name: xfirewall
+    name: "{{ cminfra_dsc_fw_icmpv4.name }}"
+    displayname: "{{ cminfra_dsc_fw_icmpv4.name }}"
+    ensure: "{{ cminfra_dsc_fw_icmpv4.ensure }}"
+    action: "{{ cminfra_dsc_fw_icmpv4.action }}"
+    icmptype: "{{ cminfra_dsc_fw_icmpv4.icmptype }}"
+    direction: "{{ cminfra_dsc_fw_icmpv4.direction }}"
+    profile: "{{ cminfra_dsc_fw_icmpv4.profile }}"
+    enabled: "{{ cminfra_dsc_fw_icmpv4.enabled }}"
+  when: cminfra_dsc_fw_icmpv4.cminfra_include
+  tags: DCS_cminfra_allowICMPv4
+
+- name: cminfra_allowRDP_Ansiblemanaged
+  win_dsc:
+    resource_name: xfirewall
+    name: "{{ cminfra_dsc_fw_rdp.name }}"
+    displayname: "{{ cminfra_dsc_fw_rdp.name }}"
+    ensure: "{{ cminfra_dsc_fw_rdp.ensure }}"
+    localport: "{{ cminfra_dsc_fw_rdp.localport }}"
+    remoteaddress: "{{ cminfra_dsc_fw_rdp.remoteaddress }}"
+    action: "{{ cminfra_dsc_fw_rdp.action }}"
+    protocol: "{{ cminfra_dsc_fw_rdp.protocol }}"
+    direction: "{{ cminfra_dsc_fw_rdp.direction }}"
+    profile: "{{ cminfra_dsc_fw_rdp.profile }}"
+    enabled: "{{ cminfra_dsc_fw_rdp.enabled }}"
+  when: cminfra_dsc_fw_rdp.cminfra_include
+  tags: DSC_cminfra_allowRDP
+
+- name: cminfra_allowWinRM_HTTP_Ansiblemanaged
+  win_dsc:
+    resource_name: xfirewall
+    name: "{{ cminfra_dsc_fw_winrm.name }}"
+    displayname: "{{ cminfra_dsc_fw_winrm.name }}"
+    ensure: "{{ cminfra_dsc_fw_winrm.ensure }}"
+    localport: "{{ cminfra_dsc_fw_winrm.localport }}"
+    remoteaddress: "{{ cminfra_dsc_fw_winrm.remoteaddress }}"
+    action: "{{ cminfra_dsc_fw_winrm.action }}"
+    protocol: "{{ cminfra_dsc_fw_winrm.protocol }}"
+    direction: "{{ cminfra_dsc_fw_winrm.direction }}"
+    profile: "{{ cminfra_dsc_fw_winrm.profile }}"
+    enabled: "{{ cminfra_dsc_fw_winrm.enabled }}"
+  when: cminfra_dsc_fw_winrm.cminfra_include
+  tags: DSC_cminfra_allowWinRM_HTTP
+
+- name: cminfra_allowCMINFRA_servers_Ansiblemanaged
+  win_dsc:
+    resource_name: xfirewall
+    name: "{{ cminfra_dsc_fw_cminfraservers.name }}"
+    displayname: "{{ cminfra_dsc_fw_cminfraservers.name }}"
+    ensure: "{{ cminfra_dsc_fw_cminfraservers.ensure }}"
+    localport: "{{ cminfra_dsc_fw_cminfraservers.localport }}"
+    remoteaddress: "{{ cminfra_dsc_fw_cminfraservers.remoteaddress }}"
+    action: "{{ cminfra_dsc_fw_cminfraservers.action }}"
+    protocol: "{{ cminfra_dsc_fw_cminfraservers.protocol }}"
+    direction: "{{ cminfra_dsc_fw_cminfraservers.direction }}"
+    profile: "{{ cminfra_dsc_fw_cminfraservers.profile }}"
+    enabled: "{{ cminfra_dsc_fw_cminfraservers.enabled }}"
+  when: cminfra_dsc_fw_cminfraservers.cminfra_include
+  tags: DSC_cminfra_allowcminfraservers
+
+- name: cminfra_allowWorkstationTestNetwork_Ansiblemanaged
+  win_dsc:
+    resource_name: xfirewall
+    name: "{{ cminfra_dsc_fw_workstationtestnet.name }}"
+    displayname: "{{ cminfra_dsc_fw_workstationtestnet.name }}"
+    ensure: "{{ cminfra_dsc_fw_workstationtestnet.ensure }}"
+    localport: "{{ cminfra_dsc_fw_workstationtestnet.localport }}"
+    remoteaddress: "{{ cminfra_dsc_fw_workstationtestnet.remoteaddress }}"
+    action: "{{ cminfra_dsc_fw_workstationtestnet.action }}"
+    protocol: "{{ cminfra_dsc_fw_workstationtestnet.protocol }}"
+    direction: "{{ cminfra_dsc_fw_workstationtestnet.direction }}"
+    profile: "{{ cminfra_dsc_fw_workstationtestnet.profile }}"
+    enabled: "{{ cminfra_dsc_fw_workstationtestnet.enabled }}"
+  when: cminfra_dsc_fw_workstationtestnet.cminfra_include
+  tags: DSC_cminfra_allowWorkstationTestNetwork
+
+- name: cminfra_allowTCP80_Ansiblemanaged
+  win_dsc:
+    resource_name: xfirewall
+    name: "{{ cminfra_dsc_fw_tcp80.name }}"
+    displayname: "{{ cminfra_dsc_fw_tcp80.name }}"
+    ensure: "{{ cminfra_dsc_fw_tcp80.ensure }}"
+    localport: "{{ cminfra_dsc_fw_tcp80.localport }}"
+    remoteaddress: "{{ cminfra_dsc_fw_tcp80.remoteaddress }}"
+    action: "{{ cminfra_dsc_fw_tcp80.action }}"
+    protocol: "{{ cminfra_dsc_fw_tcp80.protocol }}"
+    direction: "{{ cminfra_dsc_fw_tcp80.direction }}"
+    profile: "{{ cminfra_dsc_fw_tcp80.profile }}"
+    enabled: "{{ cminfra_dsc_fw_tcp80.enabled }}"
+  when: cminfra_dsc_fw_tcp80.cminfra_include
+  tags: DSC_cminfra_allowTCP80

@@ -1,0 +1,58 @@
+---
+# Local 'administrators' group
+admins:
+  group: administrators
+  members:
+    - member: 'cm-ss\Administrator'
+    - member: 'DOMAIN\CmInfraAdmins'
+    - member: 'DOMAIN\ServerOperators'
+    
+nosms:
+  drives:
+    - drive: 'c:\'
+    - drive: 'd:\'
+    - drive: 'e:\'
+    - drive: 'f:\'
+    - drive: 'g:\'
+
+features:
+  feature:
+    - name: FileAndStorage-Services
+    - name: File-Services
+    - name: FS-FileServer
+    - name: Storage-Services
+    ##
+    - name: NET-Framework-Features
+    - name: NET-Framework-Core
+    ##
+    - name: NET-Framework-45-features
+    - name: NET-Framework-45-Core
+    - name: NET-WCF-Services45
+    - name: NET-WCF-TCP-PortSharing45
+    ##
+    - name: RDC
+    ##
+    - name: RSAT
+    - name: RSAT-Role-Tools
+    - name: RSAT-AD-Tools
+    - name: RSAT-AD-PowerShell
+    - name: RSAT-ADDS
+    - name: RSAT-AD-AdminCenter
+    - name: RSAT-ADDS-Tools
+    - name: RSAT-ADLDS
+    - name: UpdateServices-RSAT
+    - name: UpdateServices-API
+    - name: UpdateServices-UI
+    ##
+    - name: FS-SMB1
+    ##
+    - name: Windows-Defender-Features
+    - name: Windows-Defender
+    - name: Windows-Defender-GUI
+    ##
+    - name: PowerShellRoot
+    - name: PowerShell
+    - name: PowerShell-V2
+    - name: PowerShell-ISE
+    ##
+    - name: WoW64-Support

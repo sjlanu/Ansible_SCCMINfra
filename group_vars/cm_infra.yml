@@ -1,0 +1,71 @@
+---
+ansible_port: 5985
+ansible_connection: winrm
+ansible_winrm_transport: ntlm
+ansible_become_method: runas
+ansible_become_user: '.\administrator'
+ansible_winrm_server_cert_validation: ignore
+ansible_user: LocalUser@DOMAIN.LOCAL
+ansible_password: VerySecretPass
+
+cminfra_dsc_fwprofiles:
+  - name: Domain
+  - name: Public
+  - name: Private
+
+cminfra_dsc_fw_icmpv4:
+  cminfra_include: true
+  name: 'cminfra_allowICMPv4_Ansiblemanaged'
+  remoteaddress: Any
+  icmptype: Any
+  action: Allow
+  direction: Inbound
+  profile: Any
+  enabled: True
+  ensure: present
+cminfra_dsc_fw_rdp:
+  cminfra_include: true
+  name: 'cminfra_allowRDP_Ansiblemanaged'
+  remoteaddress: '10.0.0.1/255.255.255.0, 10.0.0.2/255.255.255.0'
+  protocol: tcp
+  localport: '3389'
+  action: allow
+  direction: Inbound
+  profile: Any
+  enabled: True
+  ensure: Present
+cminfra_dsc_fw_winrm:
+  cminfra_include: true
+  name: 'cminfra_allowWinRM_HTTP_Ansiblemanaged'
+  remoteaddress: '10.0.0.1/255.255.255.0, 10.0.0.2/255.255.255.0'
+  protocol: tcp
+  localport: '5985'
+  action: Allow
+  direction: inbound
+  profile: Any
+  enabled: True
+  ensure: present
+cminfra_dsc_fw_cminfraservers:
+  cminfra_include: true
+  name: 'cminfra_allowCMINFRA_servers_Ansiblemanaged'
+  remoteaddress: '10.1.0.1, 10.1.0.2, 10.1.0.3, 10.1.0.4, 10.1.0.5'
+  protocol: Any
+  localport: Any
+  action: Allow
+  direction: inbound
+  profile: Any
+  enabled: True
+  ensure: Present
+cminfra_dsc_fw_workstationtestnet:
+  cminfra_include: true
+  name: 'cminfra_allowWorkstationTestNetwork_Ansiblemanaged'
+  remoteaddress: '10.2.0.128/255.255.255.192'
+  protocol: Any
+  localport: Any
+  action: allow
+  direction: inbound
+  profile: Any
+  enabled: True
+  ensure: Present
+cminfra_dsc_fw_tcp80:
+  cminfra_include: false

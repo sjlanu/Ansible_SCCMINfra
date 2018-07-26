@@ -1,0 +1,6 @@
+---
+- name: install windows Features
+  win_feature:
+    name: UpdateServices
+    source: z:\sources\sxs
+    state: Present

@@ -1,0 +1,77 @@
+---
+# Local 'administrators' group
+admins:
+  group: administrators
+  members:
+    - member: 'cm-mp\Administrator'
+    - member: 'DOMAIN\CmInfraAdmins'
+    - member: 'DOMAIN\ServerOperators'
+    - member: 'DOMAIN\cm-ss$'
+
+nosms:
+  drives:
+    - drive: 'c:\'
+
+features:
+  feature:
+    - name: FileAndStorage-Services
+    - name: Storage-Services
+    ##
+    - name: Web-Server
+    - name: Web-WebServer
+    - name: Web-Common-Http
+    - name: Web-Default-Doc
+    - name: Web-Dir-Browsing
+    - name: Web-Http-Errors
+    - name: Web-Static-Content
+    - name: Web-Http-Redirect
+    - name: Web-Health
+    - name: Web-Http-Logging
+    - name: Web-Log-Libraries
+    - name: Web-Request-Monitor
+    - name: Web-Http-Tracing
+    - name: Web-Performance
+    - name: Web-Stat-Compression
+    - name: Web-security
+    - name: Web-Filtering
+    - name: Web-Windows-Auth
+    - name: Web-App-Dev
+    - name: Web-Net-Ext45
+    - name: Web-Asp-Net45
+    - name: Web-ISAPI-Ext
+    - name: Web-ISAPI-Filter
+    - name: Web-Mgmt-tools
+    - name: Web-Mgmt-Console
+    - name: Web-Mgmt-Compat
+    - name: Web-Metabase
+    - name: Web-WMI
+    - name: Web-Mgmt-Service
+    ##
+    - name: NET-Framework-45-features
+    - name: NET-Framework-45-Core
+    - name: NET-Framework-45-ASPNET
+    - name: NET-WCF-Services45
+    - name: NET-WCF-TCP-PortSharing45
+    ##
+    - name: BITS
+    - name: BITS-IIS-Ext
+    ##
+    - name: RSAT
+    - name: RSAT-Feature-Tools
+    - name: RSAT-BITS-Server
+    ##
+    - name: FS-SMB1
+    ##
+    - name: Windows-Defender-Features
+    - name: Windows-Defender
+    - name: Windows-Defender-GUI
+    ##
+    - name: PowerShellRoot
+    - name: PowerShell
+    - name: PowerShell-ISE
+    ##
+    - name: WAS
+    - name: WAS-Process-Model
+    - name: WAS-Config-APIs
+    ##
+    - name: WoW64-Support

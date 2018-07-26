@@ -1,0 +1,7 @@
+---
+- name: Create new eventlog for Ansible
+  win_eventlog:
+    name: AnsibleLog
+    sources:
+    - Ansible
+    state: present

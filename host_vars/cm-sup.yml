@@ -1,0 +1,71 @@
+---
+# Local 'administrators' group
+admins:
+  group: administrators
+  members:
+    - member: 'cm-sup\Administrator'
+    - member: 'DOMAIN\CmInfraAdmins'
+    - member: 'DOMAIN\ServerOperators'
+    - member: 'DOMAIN\cm-ss$'
+
+nosms:
+  drives:
+    - drive: 'c:\'
+
+features:
+  feature:
+    - name: FileAndStorage-Services
+    - name: File-Services
+    - name: FS-FileServer
+    - name: Storage-Services
+    ##
+    - name: Web-Server
+    - name: Web-WebServer
+    - name: Web-Common-Http
+    - name: Web-Default-Doc
+    - name: Web-Static-Content
+    - name: Web-Performance
+    - name: Web-Dyn-Compression
+    - name: Web-Security
+    - name: Web-Filtering
+    - name: Web-Windows-Auth
+    - name: Web-App-Dev
+    - name: Web-Net-Ext45
+    - name: Web-Asp-Net45
+    - name: Web-ISAPI-Ext
+    - name: Web-ISAPI-Filter
+    - name: Web-Mgmt-Tools
+    - name: Web-Mgmt-Console
+    - name: Web-Mgmt-Compat
+    - name: Web-Metabase
+    ##
+    - name: NET-Framework-45-features
+    - name: NET-Framework-45-Core
+    - name: NET-Framework-45-ASPNET
+    - name: NET-WCF-Services45
+    - name: NET-WCF-HTTP-Activation45
+    - name: NET-WCF-TCP-PortSharing45
+    ##
+    - name: RSAT
+    - name: RSAT-Role-Tools
+    - name: UpdateServices-RSAT
+    - name: UpdateServices-API
+    - name: UpdateServices-UI
+    ##
+    - name: FS-SMB1
+    ##
+    - name: Windows-Defender-Features
+    - name: Windows-Defender
+    - name: Windows-Defender-GUI
+    ##
+    - name: Windows-Internal-Database
+    ##
+    - name: PowerShellRoot
+    - name: PowerShell
+    - name: PowerShell-ISE
+    ##
+    - name: WAS
+    - name: WAS-Process-Model
+    - name: WAS-Config-APIs
+    ##
+    - name: WoW64-Support
