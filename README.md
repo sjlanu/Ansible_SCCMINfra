@@ -2,11 +2,11 @@
 
 #### Servers
 
-SS = SiteServer
-DP = Distribution point
-MP = Management Point
-SUP = Software update point
-RFA = Reporting Services point
+ - SS = SiteServer
+ - DP = Distribution point
+ - MP = Management Point
+ - SUP = Software update point
+ - RFA = Reporting Services point
 
 #### Setup
 
