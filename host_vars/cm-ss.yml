@@ -1,4 +1,14 @@
 ---
+# Authors
+# -------
+#
+# Sami Lanu <sami.lanu@tut.fi>
+#
+# Copyright
+# ---------
+#
+# Copyright 2018 Tampere University of Technology
+
 # Local 'administrators' group
 admins:
   group: administrators
@@ -6,7 +16,7 @@ admins:
     - member: 'cm-ss\Administrator'
     - member: 'DOMAIN\CmInfraAdmins'
     - member: 'DOMAIN\ServerOperators'
-    
+
 nosms:
   drives:
     - drive: 'c:\'

@@ -1,4 +1,13 @@
 ---
+# Authors
+# -------
+#
+# Sami Lanu <sami.lanu@tut.fi>
+#
+# Copyright
+# ---------
+#
+# Copyright 2018 Tampere University of Technology
 - name: install windows Features
   win_feature:
     name: "{{ item.name }}"

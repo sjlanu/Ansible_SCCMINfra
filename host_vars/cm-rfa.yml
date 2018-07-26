@@ -1,4 +1,14 @@
 ---
+# Authors
+# -------
+#
+# Sami Lanu <sami.lanu@tut.fi>
+#
+# Copyright
+# ---------
+#
+# Copyright 2018 Tampere University of Technology
+
 cminfra_dsc_fw_tcp80:
   cminfra_include: true
   name: 'cminfra_allowTCP80_AnsibleManaged'

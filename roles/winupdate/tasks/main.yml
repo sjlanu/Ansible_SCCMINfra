@@ -1,4 +1,13 @@
 ---
+# Authors
+# -------
+#
+# Sami Lanu <sami.lanu@tut.fi>
+#
+# Copyright
+# ---------
+#
+# Copyright 2018 Tampere University of Technology
 # Check for Window Updates and install. Write results to EventLog "AnsibleLog" with EventID 44444
 - name: Test system connection
   wait_for_connection:
