@@ -1,5 +1,9 @@
 ## Ansible playbooks to set up basic SCCM infra servers using Powershell DSC module
 
+#### Tested platforms
+
+  - Windows Server 2016
+
 #### Servers
 
  - SS = SiteServer
